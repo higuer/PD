@@ -1,0 +1,47 @@
+﻿;
+0 wt_qlist_noteon 1; xwt_qlist_voice1 60;	xwt_qlist_voice2 63;	xwt_qlist_voice3 67;	xwt_qlist_voice4 71;	wt_qlist_oscAMP1 0.67;	wt_qlist_oscATK1 4500;	wt_qlist_oscDEC1 1667;	wt_qlist_oscSUS1 0.65;
+wt_qlist_oscREL1 2500;	xwt_qlist_wavepos 0.3;	wt_qlist_presetA 0;	wt_qlist_presetB 1;	wt_qlist_presetC 2;	wt_qlist_presetD 3;	wt_qlist_normalize 1;	xwt_qlist_overallAMP 0.70;	
+xwt_qlist_lowmodfreq 0.25;	xwt_qlist_lowmodamount 5000;	xwt_qlist_lowmoddepth 600;	wt_qlist_lowres 2;	wt_qlist_pan 0.5;	xwt_qlist_bandcentre 61;	wt_qlist_bandres 7; 
+xwt_qlist_LFOrate 3;	wt_qlist_LFOdepth 2;
+4500 xwt_qlist_voice1 37;	 xwt_qlist_voice2 74;	 xwt_qlist_voice3 55;	 xwt_qlist_voice4 69;	wt_qlist_pan 0.33;	wt_qlist_presetA 3;	wt_qlist_presetD 0; wt_qlist_normalize 1;
+2500 xwt_qlist_lowmodfreq 4.5;	xwt_qlist_lowmodamount 960.7;	xwt_qlist_lowmoddepth 240;	xwt_qlist_lowres 0.5;	xwt_qlist_bandcentre 83;
+4500 xwt_qlist_voice1 60;	xwt_qlist_voice2; 72; xwt_qlist_voice3 64; xwt_qlist_voice4 69;
+5500 wt_qlist_pan 0.65;	xwt_qlist_voice 2 60;	xwt_qlist_voice1 72; xwt_qlist_voice3 64; xwt_qlist_voice4 69; xwt_qlist_wavepos 2.6 xwt_qlist_LFOrate 2.5; xwt_qlist_LFOdepth 6.5;
+1500 xwt_qlist_pan 0.45; xwt_qlist_wavepos 2; xwt_qlist_bandcentre 95; wt_qlist_bandres 3; wt_qlist_presetA 1; wt_qlist_presetB 2; wt_qlist_presetC 2; wt_qlist_presetD 0; wt_qlist_normalize 1; xwt_qlist_LFOrate 0.5;
+xwt_qlist_LFOdepth 3.5;
+3500 xwt_qlist_wavepos 3; xwt_qlist_voice1 35;
+3500 xwt_qlist_wavepos 0; wt_qlist_noteoff 1; xwt_qlist_LFOrate 3.5; xwt_qlist_voice1 65;
+3750 wt_qlist_oscAMP1 0.455; wt_qlist_oscATK1 5000; wt_qlist_oscDEC1 500; wt_qlist_oscSUS1 0.34; wt_qlist_oscREL1 1512; wt_qlist_voice1 56; wt_qlist_voice2 59; wt_qlist_voice3; 62; wt_qlist_voice4 65; xwt_qlist_bandcentre 76;
+wt_qlist_bandres 8; xwt_qlist_lowmodfreq 0.25; xwt_qlist_lowmodamount 2000; wt_qlist_lowmoddepth 100; wt_qlist_lowres 1; wt_qlist_pan 0.2; xwt_qlist_overallAMP 0.88; xwt_qlist_LFOrate 0; xwt_qlist_wavepos 1.7;
+wt_qlist_presetA 0; wt_qlist_presetB 2; wt_qlist_presetC 3; wt_qlist_normalize 1; wt_qlist_noteon 1;
+1000 xwt_qlist_pan 1; xwt_qlist_lowmodfreq 3.5; wt_qlist_noteon 1;
+1000 xwt_qlist_pan 0; xwt_qlist_LFOrate 5; xwt_qlist_LFOdepth 1.5;
+3250 xwt_qlist_voice1 98; xwt_qlist_voice2 86; xwt_qlist_voice3 67; xwt_qlist_voice4 73; xwt_qlist_LFOrate 1; xwt_qlist_lowmodfreq 0.25; xwt_qlist_lowmodamount 393.7; xwt_qlistlowmoddepth 626; wt_qlist_lowres 4; wt_qlist_bandres 2;
+xwt_qlist_bandcentre 50; xwt_qlist_overallAMP 0.3; wt_qlist_presetA 3; wt_qlist_presetB 2; wt_qlist_presetC 1; wt_qlist_presetD 0; wt_qlist_normalize 1;
+500 xwt_qlist_pan 1; zwt_qlist_lowmoddepth 700; xwt_qlist_voice1 60; xwt_qlist_wavepos 1.6;
+1500 xwt_qlist_pan 0; xwt_qlist_LFOrate 4.5; xwt_qlist_LFOdepth 12;
+2000 zwt_qlist_lowmoddepth 120; xwt_qlist_pan 0.5; xwt_qlist_wavepos 2.76;
+3500 wt_qlist_overallAMP 0
+10 xwt_qlist_voice1 63; xwt_qlist_voice2 64; xwt_qlist_voice3 67; xwt_qlist_voice 70;
+90 wt_qlist_oscAMP1 0.5; wt_qlist_oscATK1 3500; wt_qlist_oscDEC1 4500; wt_qlist_oscSUS1 0.25; wt_qlist_oscREL1 500; wt_qlist_overallAMP 0.64; xwt_qlist_lowmodfreq 2.179; xwt_qlist_lowmodamount 4803; xwt_qlist_lowmoddepth 559.3;
+wt_qlist_lowres 1.6; xwt_qlist_bandcentre 75; wt_qlist_bandres 0.5; xwt_qlist_LFOrate 1; xwt_qlist_LFOdepth 13; wt_qlist_presetA 0; wt_qlist_presetB 1; wt_qlist_presetC 0; wt_qlist_presetD 1; wt_qlist_normalize 1;
+1400 wt_qlist_oscATK1 500; wt_qlist_oscDEC1 4500; wt_qlist_oscSUS1 0.15; wt_qlist_oscAMP1 0.74;
+1500 xwt_qlist_voice1 90; xwt_qlist_voice2; 107; xwt_qlist_voice3 83; xwt_qlist_voice4 45;
+3500 xwt_qlist_pan 0.25; xwt_qlist_LFOrate 3.4; xwt_qlist_LFOdepth 8; xwt_qlist_bandcentre 100; wt_qlist_bandres 10;
+2500 zwt_qlist_bandcentre 20; zwt_qlist_lowmoddepth 600; xwt_qlist_lowmodrate 1.5; xwt_qlist_lowmodamount 6500; wt_qlist_lowres 2.5;
+2000 xwt_qlist_voice1 60; xwt_qlist_voice2 63; xwt_qlist_voice3 67; xwt_qlist_voice4 72; wt_qlist_oscAMP1 0.45; wt_qlist_oscATK1 1500; wt_qlist_oscDEC1 750; wt_qlist_oscSUS1 0.65; wt_qlist_oscREL1 1500; xwt_qlist_lowmodfreq 1;
+zwt_qlist_lowmoddepth 500; xwt_qlist_lowmodamount 2000; wt_qlist_lowres 1; xwt_qlist_bandcentre 70; wt_qlist_bandres 5; xwt_qlist_pan 0.5 xwt_qlist_LFOrate 3.5; xwt_qlist_LFOdepth 7; wt_qlist_presetA 1; wt_qlist_presetB 2;
+wt_qlist_presetC 1; wt_qlist_presetD 1;
+3000 wt_qlist_noteoff 1;
+2000 xwt_qlist_overallAMP 0; wt_qlist_voice1 0; wt_qlist_voice2 0; wt_qlist_voice3 0; wt_qlist_voice4 0; wt_qlist_oscAMP1 0; wt_qlist_oscATK1 0; wt_qlist_oscDEC1 0; wt_qlist_oscSUS1 0; wt_qlist_oscREL1 0; wt_qlist_wavepos 0;
+wt_qlist_presetA 0; wt_qlist_presetB 0; wt_qlist_presetC 0; wt_qlist_presetD 0; wt_qlist_normalize 1; wt_qlist_lowmodfreq 0; wt_qlist_lowmodamount 0; wt_qlist_lowmoddepth 100; wt_qlist_lowmodres 1; wt_qlist_bandcentre 0;
+wt_qlist_bandres 0; wt_qlist_LFOrate 0; wt_qlist_LFOdepth 0;
+
+
+
+
+
+
+
+
+		

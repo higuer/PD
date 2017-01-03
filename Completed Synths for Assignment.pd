@@ -1,0 +1,1608 @@
+#N canvas 129 57 1473 818 10;
+#N canvas 1128 22 726 1007 wavetable 0;
+#X obj 98 -314 vsl 15 128 0 127 0 0 empty wt_interface_voice1 empty
+0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 158 -315 vsl 15 128 0 127 0 0 empty wt_interface_voice2 empty
+0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 208 -312 vsl 15 128 0 127 0 0 empty wt_interface_voice3 empty
+0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 256 -315 vsl 15 128 0 127 0 0 empty wt_interface_voice4 empty
+0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 222 -2 *~;
+#N canvas 644 99 1218 845 variables 0;
+#X obj 68 -364 bng 15 250 50 0 empty wt_interface_noteon empty 17 7
+0 10 -262144 -1 -1;
+#X obj 153 -368 bng 15 250 50 0 empty wt_interface_noteoff empty 17
+7 0 10 -262144 -1 -1;
+#X obj 151 -39 vsl 15 128 0 10 0 0 empty wt_bandpass_resonance empty
+0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 151 101 \$1 25;
+#X obj 43 -64 vsl 15 128 0 127 0 0 empty wt_bandpass_centre empty 0
+-9 0 10 -262144 -1 -1 0 1;
+#X obj 43 114 \$1 25;
+#X obj 43 140 line~;
+#X obj 20 -404 vsl 15 128 0 1 0 0 empty wt_overall_amp empty 0 -9 0
+10 -262144 -1 -1 0 1;
+#X obj 20 -262 \$1 25;
+#X obj 20 -232 line~;
+#X obj 347 -417 vsl 15 128 0 1 0 0 empty wt_oscillator_amp1 empty 0
+-9 0 10 -262144 -1 -1 0 1;
+#X obj 381 -417 vsl 15 128 0 5000 0 0 empty wt_oscillator_attack1 empty
+0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 403 -417 vsl 15 128 0 5000 0 0 empty wt_oscillator_decay1 empty
+0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 425 -417 vsl 15 128 0 1 0 0 empty wt_oscillator_sustain1 empty
+0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 448 -417 vsl 15 128 0 5000 0 0 empty wt_oscillator_release1
+empty 0 -9 0 10 -262144 -1 -1 0 1;
+#X text 451 -435 R;
+#N canvas 69 47 685 491 ADSR 0;
+#X msg 135 261 \$1 \$2;
+#X msg 417 238 0 \$1;
+#X obj 135 223 pack f f;
+#X obj 133 187 f;
+#X obj 417 201 f;
+#X obj 178 187 f;
+#X obj 331 164 *;
+#X floatatom 327 202 5 0 0 0 - - -;
+#X obj 377 135 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 238 188 delay;
+#X obj 238 222 f;
+#X obj 27 101 inlet;
+#X obj 122 95 inlet;
+#X obj 226 91 inlet;
+#X obj 321 91 inlet;
+#X obj 379 95 inlet;
+#X obj 437 98 inlet;
+#X obj 556 99 inlet;
+#X text 21 79 Note On;
+#X text 113 73 Note Off;
+#X text 193 68 Initial Amplitude;
+#X text 319 65 Attack;
+#X text 377 70 Decay;
+#X text 432 75 Sustain;
+#X text 547 73 Release;
+#X msg 227 294 \$1 \$2;
+#X obj 232 257 pack f f;
+#X obj 132 429 outlet~;
+#X obj 139 370 line~;
+#X connect 0 0 28 0;
+#X connect 1 0 28 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 0 1 0;
+#X connect 5 0 2 1;
+#X connect 6 0 7 0;
+#X connect 7 0 10 1;
+#X connect 8 0 6 0;
+#X connect 9 0 10 0;
+#X connect 10 0 26 0;
+#X connect 11 0 9 0;
+#X connect 11 0 5 0;
+#X connect 11 0 3 0;
+#X connect 12 0 4 0;
+#X connect 13 0 3 1;
+#X connect 13 0 6 0;
+#X connect 14 0 5 1;
+#X connect 14 0 9 1;
+#X connect 15 0 26 1;
+#X connect 16 0 8 0;
+#X connect 16 0 6 1;
+#X connect 17 0 4 1;
+#X connect 25 0 28 0;
+#X connect 26 0 25 0;
+#X connect 28 0 27 0;
+#X restore 342 -256 pd ADSR;
+#X text 342 -438 AMP;
+#X obj 43 84 mtof;
+#X obj 142 -214 hsl 128 15 1 0 0 0 empty wt_interface_pan empty -2
+-8 0 10 -262144 -1 -1 6350 1;
+#X obj 139 -180 \$1 25;
+#X obj 139 -151 line~;
+#X obj 582 91 osc~;
+#X obj 582 -54 vsl 15 128 1 5 0 0 empty wt_LFO_rate empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#X obj 622 -34 vsl 15 128 1 15 0 0 empty wt_LFO_depth empty 0 -9 0
+10 -262144 -1 -1 0 1;
+#X obj 607 134 *~;
+#X text 617 -53 wobble depth;
+#X text 535 -78 wobble rate;
+#X text 65 -403 note on;
+#X text 146 -401 note off;
+#X text 9 -434 Overall Amplitude;
+#X text 567 -101 LFO for the voices;
+#X text 170 -279 Panning;
+#X text 123 -216 L;
+#X text 281 -217 R;
+#X text 381 -436 A;
+#X obj 68 -343 s wt_noteon;
+#X obj 153 -343 s wt_noteoff;
+#X obj 21 -199 s~ wt_vol;
+#X obj 212 -307 r wt_noteon;
+#X obj 262 -343 r wt_noteoff;
+#X obj 139 -124 s~ wt_pan;
+#X obj 607 168 s~ wt_wobble;
+#X obj 849 -405 bng 15 250 50 0 empty wt_preset1 empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1028 -393 bng 15 250 50 0 empty wt_preset2 empty 17 7 0 10 -262144
+-1 -1;
+#X obj 845 -9 bng 15 250 50 0 empty wt_preset3 empty 17 7 0 10 -262144
+-1 -1;
+#X text 819 -461 Preset Values are kept here allowing them to be changed
+by the user;
+#X text 307 -456 ADSR Envelope for oscillator 1;
+#X obj 899 -401 s wt_noteon;
+#X text 406 -436 D;
+#X text 427 -436 S;
+#X obj 342 -206 s~ wt_waveADSR;
+#X obj 600 -357 knob 32 32 0 3 0 0 empty wt_waveposition empty 0 -8
+0 8 -262144 -1 -1 0 1;
+#X obj 600 -223 s~ wave_pos;
+#X obj 599 -304 \$1 25;
+#X obj 599 -274 line~;
+#X text 588 -389 wave position;
+#X text 23 -89 bandpass centre frequency;
+#X text 144 -64 bandpass resonanace;
+#X obj 311 -73 vsl 15 128 0 5 0 0 empty wt_lowpass_modfreq empty 0
+-9 0 10 -262144 -1 -1 0 1;
+#X obj 311 76 osc~ 0.25;
+#X obj 312 125 *~ 2000;
+#X obj 312 101 +~ 1;
+#X obj 311 155 +~ 100;
+#X obj 310 182 s~ wt_lowcutoff;
+#X obj 388 -29 vsl 15 128 0 10000 0 0 empty wt_lowpass_modamount empty
+0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 425 12 vsl 15 128 100 1000 0 0 empty wt_lowpass_moddepth empty
+0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 483 148 s~ wt_lowres;
+#X obj 483 113 line~;
+#X obj 483 83 \$1 25;
+#X obj 483 -77 vsl 15 128 1 4 0 0 empty wt_lowpass_res empty 0 -9 0
+10 -262144 -1 -1 0 1;
+#X obj 151 133 line;
+#X obj 151 168 s wt_bpres;
+#X obj 43 169 s~ wt_bpcentre;
+#X text 271 -99 modulation frequency;
+#X text 352 -59 mod amount;
+#X text 418 -10 mod depth;
+#X text 461 -101 resonance;
+#X text 354 -125 lowpass filter;
+#X obj 68 -387 r wt_voiceon;
+#X msg 849 -376 \; xwt_qlist_voice1 58 \; xwt_qlist_voice2 61 \; xwt_qlist_voice3
+65 \; xwt_qlist_voice4 68 \; wt_qlist_oscAMP1 0.6 \; wt_qlist_oscATK1
+3500 \; wt_qlist_oscDEC1 3000 \; wt_qlist_oscSUS1 0.9 \; wt_qlist_oscREL1
+4500 \; xwt_qlist_LFORate 3 \; xwt_qlist_LFODepth 7 \; xwt_qlist_overallAMP
+0.65 \; xwt_qlist_PAN 0.5 \;;
+#X msg 1028 -365 \; xwt_qlist_voice1 60 \; xwt_qlist_voice2 63 \; xwt_qlist_voice3
+66 \; xwt_qlist_voice4 69 \; wt_qlist_oscAMP1 0.4 \; wt_qlist_oscATK1
+1500 \; wt_qlist_oscDEC1 5000 \; wt_qlist_oscSUS1 0.3 \; wt_qlist_oscREL1
+2200 \; xwt_qlist_LFORate 5 \; xwt_qlist_LFODepth 3 \; xwt_qlist_overallAMP
+0.85 \; xwt_qlist_PAN 0.23 \;;
+#X msg 845 25 \; xwt_qlist_voice1 64 \; xwt_qlist_voice2 68 \; xwt_qlist_voice3
+69 \; xwt_qlist_voice4 71 \; wt_qlist_oscAMP1 0.35 \; wt_qlist_oscATK1
+5000 \; wt_qlist_oscDEC1 2150 \; wt_qlist_oscSUS1 0.45 \; wt_qlist_oscREL1
+4500 \; xwt_qlist_LFORate 1.5 \; xwt_qlist_LFODepth 15 \; xwt_qlist_overallAMP
+0.47 \; xwt_qlist_PAN 0.86 \;;
+#X connect 0 0 36 0;
+#X connect 1 0 37 0;
+#X connect 2 0 3 0;
+#X connect 3 0 71 0;
+#X connect 4 0 18 0;
+#X connect 5 0 6 0;
+#X connect 6 0 73 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 38 0;
+#X connect 10 0 16 2;
+#X connect 11 0 16 3;
+#X connect 12 0 16 4;
+#X connect 13 0 16 5;
+#X connect 14 0 16 6;
+#X connect 16 0 51 0;
+#X connect 18 0 5 0;
+#X connect 19 0 20 0;
+#X connect 20 0 21 0;
+#X connect 21 0 41 0;
+#X connect 22 0 25 0;
+#X connect 23 0 22 0;
+#X connect 24 0 25 1;
+#X connect 25 0 42 0;
+#X connect 39 0 16 0;
+#X connect 40 0 16 1;
+#X connect 43 0 80 0;
+#X connect 43 0 48 0;
+#X connect 44 0 81 0;
+#X connect 44 0 48 0;
+#X connect 45 0 82 0;
+#X connect 45 0 48 0;
+#X connect 52 0 54 0;
+#X connect 54 0 55 0;
+#X connect 55 0 53 0;
+#X connect 59 0 60 0;
+#X connect 60 0 62 0;
+#X connect 61 0 63 0;
+#X connect 62 0 61 0;
+#X connect 63 0 64 0;
+#X connect 65 0 61 1;
+#X connect 66 0 63 1;
+#X connect 68 0 67 0;
+#X connect 69 0 68 0;
+#X connect 70 0 69 0;
+#X connect 71 0 72 0;
+#X connect 79 0 0 0;
+#X restore 5 -445 pd variables;
+#N canvas 158 25 1134 857 osc_waveforms 0;
+#X msg 158 37 \; oscA normalize;
+#X msg 286 37 \; oscB normalize;
+#X obj 255 -21 bng 15 250 50 0 empty wt_presets_normalize empty 17
+7 0 10 -262144 -1 -1;
+#X obj 156 146 hradio 15 1 0 4 empty wt_presets_oscA empty 0 -8 0 10
+-262144 -1 -1 0;
+#X obj 420 161 hradio 15 1 0 4 empty wt_presets_oscB empty 0 -8 0 10
+-262144 -1 -1 0;
+#X obj 130 175 route 0 1 2 3;
+#X obj 104 193 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 122 276 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 132 338 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 149 404 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 438 191 route 0 1 2 3;
+#X obj 415 222 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 436 281 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 458 341 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 509 404 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 81 228 \; oscA sinesum 67 1 0.5 0.33 0.25 0.2;
+#X msg 79 299 \; oscA sinesum 67 1;
+#X msg 58 366 \; oscA sinesum 67 1 0 0.33 0 0.2 0 0.142857 0 0.11;
+#X msg 49 429 \; oscA sinesum 67 1 0 -0.111111 0 0.04 0 -0.020408 0
+0.0123456 0 -0.0082644 0 0.005917;
+#X msg 410 243 \; oscB sinesum 67 1 0.5 0.33 0.25 0.2;
+#X msg 408 305 \; oscB sinesum 67 1;
+#X msg 407 363 \; oscB sinesum 67 1 0 0.33 0 0.2 0 0.142857 0 0.11
+;
+#X msg 405 432 \; oscB sinesum 67 1 0 -0.111111 0 0.04 0 -0.020408
+0 0.0123456 0 -0.0082644 0 0.005917;
+#X msg 394 37 \; oscC normalize;
+#X msg 499 37 \; oscD normalize;
+#X text 169 126 Osc A;
+#X obj 765 165 hradio 15 1 0 4 empty wt_presets_oscC empty 0 -8 0 10
+-262144 -1 -1 0;
+#X obj 783 195 route 0 1 2 3;
+#X obj 760 226 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 781 285 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 803 345 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 854 408 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text -35 242 Sawtooth;
+#X text -19 311 Sine;
+#X text -18 363 Sqare;
+#X text -27 439 Triangle;
+#X obj 59 501 hradio 15 1 0 4 empty wt_presets_oscD empty 0 -8 0 10
+-262144 -1 -1 0;
+#X obj 77 531 route 0 1 2 3;
+#X obj 54 562 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 75 621 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 97 681 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 148 744 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 755 247 \; oscC sinesum 67 1 0.5 0.33 0.25 0.2;
+#X msg 753 309 \; oscC sinesum 67 1;
+#X msg 752 367 \; oscC sinesum 67 1 0 0.33 0 0.2 0 0.142857 0 0.11
+;
+#X msg 750 436 \; oscC sinesum 67 1 0 -0.111111 0 0.04 0 -0.020408
+0 0.0123456 0 -0.0082644 0 0.005917;
+#X msg 45 703 \; oscD sinesum 67 1 0 0.33 0 0.2 0 0.142857 0 0.11;
+#X msg 44 772 \; oscD sinesum 67 1 0 -0.111111 0 0.04 0 -0.020408 0
+0.0123456 0 -0.0082644 0 0.005917;
+#X msg 47 645 \; oscD sinesum 67 1;
+#X msg 49 583 \; oscD sinesum 67 1 0.5 0.33 0.25 0.2;
+#X text 424 138 Osc B;
+#X text 771 140 Osc C;
+#X text 56 484 Osc D;
+#X connect 2 0 0 0;
+#X connect 2 0 1 0;
+#X connect 2 0 23 0;
+#X connect 2 0 24 0;
+#X connect 3 0 5 0;
+#X connect 4 0 10 0;
+#X connect 5 0 6 0;
+#X connect 5 1 7 0;
+#X connect 5 2 8 0;
+#X connect 5 3 9 0;
+#X connect 6 0 15 0;
+#X connect 7 0 16 0;
+#X connect 8 0 17 0;
+#X connect 9 0 18 0;
+#X connect 10 0 11 0;
+#X connect 10 1 12 0;
+#X connect 10 2 13 0;
+#X connect 10 3 14 0;
+#X connect 11 0 19 0;
+#X connect 12 0 20 0;
+#X connect 13 0 21 0;
+#X connect 14 0 22 0;
+#X connect 26 0 27 0;
+#X connect 27 0 28 0;
+#X connect 27 1 29 0;
+#X connect 27 2 30 0;
+#X connect 27 3 31 0;
+#X connect 28 0 42 0;
+#X connect 29 0 43 0;
+#X connect 30 0 44 0;
+#X connect 31 0 45 0;
+#X connect 36 0 37 0;
+#X connect 37 0 38 0;
+#X connect 37 1 39 0;
+#X connect 37 2 40 0;
+#X connect 37 3 41 0;
+#X connect 38 0 49 0;
+#X connect 39 0 48 0;
+#X connect 40 0 46 0;
+#X connect 41 0 47 0;
+#X restore 5 -477 pd osc_waveforms;
+#X text 116 -478 configure the various waveforms for the 2 oscillators
+;
+#X obj 228 63 dac~;
+#N canvas 774 334 450 300 pan 0;
+#X obj 82 51 inlet~;
+#X obj 101 144 *~;
+#X obj 122 193 outlet~;
+#X obj 195 69 -~ 1;
+#X obj 191 99 *~ -1;
+#X obj 177 145 *~;
+#X obj 184 195 outlet~;
+#X obj 175 34 r~ wt_pan;
+#X connect 0 0 1 0;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 1;
+#X connect 5 0 6 0;
+#X connect 7 0 1 1;
+#X connect 7 0 3 0;
+#X restore 222 30 pd pan;
+#X text 88 -336 voice 1;
+#X text 147 -337 voice 2;
+#X text 197 -338 voice 3;
+#X text 255 -340 voice 4;
+#X text 301 -283 change these sliders to configure each voice's pitch
+;
+#X text 284 -57 to prevent clipping signal is diminished;
+#X text 387 -23 combined with an overall amplitude slider;
+#X text 278 29 pan the output signal from left to right;
+#X text 92 -457 configure ADSR for voices and total amplitude as well
+as cutoff frequency \, resonance and ADSR for the lowpass filter and
+configure LFO for vibrato;
+#X obj 278 -2 r~ wt_vol;
+#N canvas 984 73 774 655 voices 0;
+#X obj 72 445 outlet;
+#X obj 142 445 outlet;
+#X obj 212 446 outlet;
+#X obj 275 448 outlet;
+#X obj 68 47 inlet;
+#X obj 132 48 inlet;
+#X obj 194 48 inlet;
+#X obj 266 49 inlet;
+#X obj 122 398 route 1 2 3 4;
+#X obj 124 340 pack f f f;
+#X obj 52 190 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 129 176 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 269 189 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 77 220 f;
+#X obj 144 224 f;
+#X obj 204 192 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 213 231 f;
+#X obj 276 231 f;
+#X obj 135 288 poly 4 1;
+#X msg 256 292 100;
+#X text 323 198 the values are then stored as floats and can either
+be triggered through a bang sending noteon or by sliding the sliders
+;
+#X text 312 290 this is velocity of each note and must be kept at 100
+for output;
+#X text 167 378 each voice goes through a different oscillator subpatch
+;
+#X obj 312 269 r wt_noteon;
+#X obj 149 144 r wt_noteon;
+#X obj 138 96 s wt_voiceon;
+#X connect 4 0 13 1;
+#X connect 4 0 25 0;
+#X connect 5 0 14 1;
+#X connect 5 0 25 0;
+#X connect 6 0 16 1;
+#X connect 6 0 25 0;
+#X connect 7 0 17 1;
+#X connect 7 0 25 0;
+#X connect 8 0 0 0;
+#X connect 8 1 1 0;
+#X connect 8 2 2 0;
+#X connect 8 3 3 0;
+#X connect 9 0 8 0;
+#X connect 10 0 13 0;
+#X connect 11 0 14 0;
+#X connect 12 0 17 0;
+#X connect 13 0 18 0;
+#X connect 14 0 18 0;
+#X connect 15 0 16 0;
+#X connect 16 0 18 0;
+#X connect 17 0 18 0;
+#X connect 18 0 9 0;
+#X connect 18 1 9 1;
+#X connect 18 2 9 2;
+#X connect 19 0 18 1;
+#X connect 23 0 19 0;
+#X connect 24 0 10 0;
+#X connect 24 0 11 0;
+#X connect 24 0 15 0;
+#X connect 24 0 12 0;
+#X restore 142 -143 pd voices;
+#N canvas 845 168 553 574 oscillator 0;
+#X obj 18 9 inlet;
+#X obj 18 73 mtof;
+#N canvas 590 155 505 441 oscillators 0;
+#X obj -40 88 tabosc4~ oscA;
+#X obj 54 88 tabosc4~ oscB;
+#X obj 11 14 inlet~;
+#X obj -39 193 outlet~;
+#X obj 55 193 outlet~;
+#X obj 144 88 tabosc4~ oscC;
+#X obj 144 193 outlet~;
+#X obj 241 89 tabosc4~ oscD;
+#X obj 242 193 outlet~;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 2 0 1 0;
+#X connect 2 0 5 0;
+#X connect 2 0 7 0;
+#X connect 5 0 6 0;
+#X connect 7 0 8 0;
+#X restore 27 149 pd oscillators;
+#X obj 30 347 outlet~;
+#X obj 27 128 +~;
+#X obj 18 41 unpack f;
+#X text 62 72 midi values converted to a frequency;
+#X text 143 96 combined with a vibrato to value for small oscillations
+in pitch;
+#X text 124 145 sent into each oscillator;
+#X obj 62 102 r~ wt_wobble;
+#N canvas 414 229 910 677 waveswitch 0;
+#X obj 24 233 inlet~;
+#X obj 125 233 inlet~;
+#X obj 212 233 inlet~;
+#X obj 311 92 inlet~;
+#X obj 95 149 -~ 3;
+#X obj 95 190 *~ -1;
+#X obj 176 190 *~ -1;
+#X obj 256 190 *~ -1;
+#X obj 176 149 -~ 2;
+#X obj 256 149 -~ 1;
+#X obj 407 92 r~ wave_pos;
+#X obj 304 212 *~;
+#X obj 87 290 *~;
+#X obj 255 290 *~;
+#X obj 177 290 *~;
+#X obj 284 354 outlet~;
+#X text 198 21 This switches which wave is more dominant in a similar
+fashion to Panning;
+#X text 13 212 OscA;
+#X text 121 213 oscB;
+#X text 342 203 oscD;
+#X text 218 214 oscC;
+#X connect 0 0 12 0;
+#X connect 1 0 14 0;
+#X connect 2 0 13 0;
+#X connect 3 0 11 0;
+#X connect 4 0 5 0;
+#X connect 5 0 12 1;
+#X connect 6 0 14 1;
+#X connect 7 0 13 1;
+#X connect 8 0 6 0;
+#X connect 9 0 7 0;
+#X connect 10 0 9 0;
+#X connect 10 0 8 0;
+#X connect 10 0 4 0;
+#X connect 10 0 11 1;
+#X connect 11 0 15 0;
+#X connect 12 0 15 0;
+#X connect 13 0 15 0;
+#X connect 14 0 15 0;
+#X restore 28 197 pd waveswitch;
+#X obj 29 256 *~;
+#X obj 87 233 r~ wt_waveADSR;
+#N canvas 1015 284 418 261 filters 0;
+#X obj 57 59 inlet~;
+#X obj 116 222 outlet~;
+#X obj 116 146 moog~;
+#X obj 114 77 r~ wt_lowcutoff;
+#X obj 221 77 r~ wt_lowres;
+#X obj 117 193 vcf~;
+#X obj 180 137 r~ wt_bpcentre;
+#X obj 260 170 r wt_bpres;
+#X connect 0 0 2 0;
+#X connect 2 0 5 0;
+#X connect 3 0 2 1;
+#X connect 4 0 2 2;
+#X connect 5 0 1 0;
+#X connect 6 0 5 1;
+#X connect 7 0 5 2;
+#X restore 29 288 pd filters;
+#X text 187 236 combined with ADSR envelope for the voice;
+#X text 109 289 put through a lowpass filter and a bandpass filter
+;
+#X connect 0 0 5 0;
+#X connect 1 0 4 0;
+#X connect 2 0 10 0;
+#X connect 2 1 10 1;
+#X connect 2 2 10 2;
+#X connect 2 3 10 3;
+#X connect 4 0 2 0;
+#X connect 5 0 1 0;
+#X connect 9 0 4 1;
+#X connect 10 0 11 0;
+#X connect 11 0 13 0;
+#X connect 12 0 11 1;
+#X connect 13 0 3 0;
+#X restore 135 -107 pd oscillator;
+#N canvas 845 168 553 574 oscillator 0;
+#X obj 18 9 inlet;
+#X obj 18 73 mtof;
+#N canvas 590 155 505 441 oscillators 0;
+#X obj -40 88 tabosc4~ oscA;
+#X obj 54 88 tabosc4~ oscB;
+#X obj 11 14 inlet~;
+#X obj -39 193 outlet~;
+#X obj 55 193 outlet~;
+#X obj 144 88 tabosc4~ oscC;
+#X obj 144 193 outlet~;
+#X obj 241 89 tabosc4~ oscD;
+#X obj 242 193 outlet~;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 2 0 1 0;
+#X connect 2 0 5 0;
+#X connect 2 0 7 0;
+#X connect 5 0 6 0;
+#X connect 7 0 8 0;
+#X restore 27 149 pd oscillators;
+#X obj 30 347 outlet~;
+#X obj 27 128 +~;
+#X obj 18 41 unpack f;
+#X text 62 72 midi values converted to a frequency;
+#X text 143 96 combined with a vibrato to value for small oscillations
+in pitch;
+#X text 124 145 sent into each oscillator;
+#X obj 62 102 r~ wt_wobble;
+#N canvas 414 229 910 677 waveswitch 0;
+#X obj 24 233 inlet~;
+#X obj 125 233 inlet~;
+#X obj 212 233 inlet~;
+#X obj 311 92 inlet~;
+#X obj 95 149 -~ 3;
+#X obj 95 190 *~ -1;
+#X obj 176 190 *~ -1;
+#X obj 256 190 *~ -1;
+#X obj 176 149 -~ 2;
+#X obj 256 149 -~ 1;
+#X obj 407 92 r~ wave_pos;
+#X obj 304 212 *~;
+#X obj 87 290 *~;
+#X obj 255 290 *~;
+#X obj 177 290 *~;
+#X obj 284 354 outlet~;
+#X text 198 21 This switches which wave is more dominant in a similar
+fashion to Panning;
+#X text 13 212 OscA;
+#X text 121 213 oscB;
+#X text 342 203 oscD;
+#X text 218 214 oscC;
+#X connect 0 0 12 0;
+#X connect 1 0 14 0;
+#X connect 2 0 13 0;
+#X connect 3 0 11 0;
+#X connect 4 0 5 0;
+#X connect 5 0 12 1;
+#X connect 6 0 14 1;
+#X connect 7 0 13 1;
+#X connect 8 0 6 0;
+#X connect 9 0 7 0;
+#X connect 10 0 9 0;
+#X connect 10 0 8 0;
+#X connect 10 0 4 0;
+#X connect 10 0 11 1;
+#X connect 11 0 15 0;
+#X connect 12 0 15 0;
+#X connect 13 0 15 0;
+#X connect 14 0 15 0;
+#X restore 28 197 pd waveswitch;
+#X obj 29 256 *~;
+#X obj 87 233 r~ wt_waveADSR;
+#N canvas 1015 284 418 261 filters 0;
+#X obj 57 59 inlet~;
+#X obj 116 222 outlet~;
+#X obj 116 146 moog~;
+#X obj 114 77 r~ wt_lowcutoff;
+#X obj 221 77 r~ wt_lowres;
+#X obj 117 193 vcf~;
+#X obj 180 137 r~ wt_bpcentre;
+#X obj 260 170 r wt_bpres;
+#X connect 0 0 2 0;
+#X connect 2 0 5 0;
+#X connect 3 0 2 1;
+#X connect 4 0 2 2;
+#X connect 5 0 1 0;
+#X connect 6 0 5 1;
+#X connect 7 0 5 2;
+#X restore 29 288 pd filters;
+#X text 187 236 combined with ADSR envelope for the voice;
+#X text 109 289 put through a lowpass filter and a bandpass filter
+;
+#X connect 0 0 5 0;
+#X connect 1 0 4 0;
+#X connect 2 0 10 0;
+#X connect 2 1 10 1;
+#X connect 2 2 10 2;
+#X connect 2 3 10 3;
+#X connect 4 0 2 0;
+#X connect 5 0 1 0;
+#X connect 9 0 4 1;
+#X connect 10 0 11 0;
+#X connect 11 0 13 0;
+#X connect 12 0 11 1;
+#X connect 13 0 3 0;
+#X restore 230 -107 pd oscillator;
+#N canvas 845 168 553 574 oscillator 0;
+#X obj 18 9 inlet;
+#X obj 18 73 mtof;
+#N canvas 590 155 505 441 oscillators 0;
+#X obj -40 88 tabosc4~ oscA;
+#X obj 54 88 tabosc4~ oscB;
+#X obj 11 14 inlet~;
+#X obj -39 193 outlet~;
+#X obj 55 193 outlet~;
+#X obj 144 88 tabosc4~ oscC;
+#X obj 144 193 outlet~;
+#X obj 241 89 tabosc4~ oscD;
+#X obj 242 193 outlet~;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 2 0 1 0;
+#X connect 2 0 5 0;
+#X connect 2 0 7 0;
+#X connect 5 0 6 0;
+#X connect 7 0 8 0;
+#X restore 27 149 pd oscillators;
+#X obj 30 347 outlet~;
+#X obj 27 128 +~;
+#X obj 18 41 unpack f;
+#X text 62 72 midi values converted to a frequency;
+#X text 143 96 combined with a vibrato to value for small oscillations
+in pitch;
+#X text 124 145 sent into each oscillator;
+#X obj 62 102 r~ wt_wobble;
+#N canvas 414 229 910 677 waveswitch 0;
+#X obj 24 233 inlet~;
+#X obj 125 233 inlet~;
+#X obj 212 233 inlet~;
+#X obj 311 92 inlet~;
+#X obj 95 149 -~ 3;
+#X obj 95 190 *~ -1;
+#X obj 176 190 *~ -1;
+#X obj 256 190 *~ -1;
+#X obj 176 149 -~ 2;
+#X obj 256 149 -~ 1;
+#X obj 407 92 r~ wave_pos;
+#X obj 304 212 *~;
+#X obj 87 290 *~;
+#X obj 255 290 *~;
+#X obj 177 290 *~;
+#X obj 284 354 outlet~;
+#X text 198 21 This switches which wave is more dominant in a similar
+fashion to Panning;
+#X text 13 212 OscA;
+#X text 121 213 oscB;
+#X text 342 203 oscD;
+#X text 218 214 oscC;
+#X connect 0 0 12 0;
+#X connect 1 0 14 0;
+#X connect 2 0 13 0;
+#X connect 3 0 11 0;
+#X connect 4 0 5 0;
+#X connect 5 0 12 1;
+#X connect 6 0 14 1;
+#X connect 7 0 13 1;
+#X connect 8 0 6 0;
+#X connect 9 0 7 0;
+#X connect 10 0 9 0;
+#X connect 10 0 8 0;
+#X connect 10 0 4 0;
+#X connect 10 0 11 1;
+#X connect 11 0 15 0;
+#X connect 12 0 15 0;
+#X connect 13 0 15 0;
+#X connect 14 0 15 0;
+#X restore 28 197 pd waveswitch;
+#X obj 29 256 *~;
+#X obj 87 233 r~ wt_waveADSR;
+#N canvas 1015 284 418 261 filters 0;
+#X obj 57 59 inlet~;
+#X obj 116 222 outlet~;
+#X obj 116 146 moog~;
+#X obj 114 77 r~ wt_lowcutoff;
+#X obj 221 77 r~ wt_lowres;
+#X obj 117 193 vcf~;
+#X obj 180 137 r~ wt_bpcentre;
+#X obj 260 170 r wt_bpres;
+#X connect 0 0 2 0;
+#X connect 2 0 5 0;
+#X connect 3 0 2 1;
+#X connect 4 0 2 2;
+#X connect 5 0 1 0;
+#X connect 6 0 5 1;
+#X connect 7 0 5 2;
+#X restore 29 288 pd filters;
+#X text 187 236 combined with ADSR envelope for the voice;
+#X text 109 289 put through a lowpass filter and a bandpass filter
+;
+#X connect 0 0 5 0;
+#X connect 1 0 4 0;
+#X connect 2 0 10 0;
+#X connect 2 1 10 1;
+#X connect 2 2 10 2;
+#X connect 2 3 10 3;
+#X connect 4 0 2 0;
+#X connect 5 0 1 0;
+#X connect 9 0 4 1;
+#X connect 10 0 11 0;
+#X connect 11 0 13 0;
+#X connect 12 0 11 1;
+#X connect 13 0 3 0;
+#X restore 326 -109 pd oscillator;
+#N canvas 845 168 553 574 oscillator 0;
+#X obj 18 9 inlet;
+#X obj 18 73 mtof;
+#N canvas 590 155 505 441 oscillators 0;
+#X obj -40 88 tabosc4~ oscA;
+#X obj 54 88 tabosc4~ oscB;
+#X obj 11 14 inlet~;
+#X obj -39 193 outlet~;
+#X obj 55 193 outlet~;
+#X obj 144 88 tabosc4~ oscC;
+#X obj 144 193 outlet~;
+#X obj 241 89 tabosc4~ oscD;
+#X obj 242 193 outlet~;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 2 0 1 0;
+#X connect 2 0 5 0;
+#X connect 2 0 7 0;
+#X connect 5 0 6 0;
+#X connect 7 0 8 0;
+#X restore 27 149 pd oscillators;
+#X obj 30 347 outlet~;
+#X obj 27 128 +~;
+#X obj 18 41 unpack f;
+#X text 62 72 midi values converted to a frequency;
+#X text 143 96 combined with a vibrato to value for small oscillations
+in pitch;
+#X text 124 145 sent into each oscillator;
+#X obj 62 102 r~ wt_wobble;
+#N canvas 414 229 910 677 waveswitch 0;
+#X obj 24 233 inlet~;
+#X obj 125 233 inlet~;
+#X obj 212 233 inlet~;
+#X obj 311 92 inlet~;
+#X obj 95 149 -~ 3;
+#X obj 95 190 *~ -1;
+#X obj 176 190 *~ -1;
+#X obj 256 190 *~ -1;
+#X obj 176 149 -~ 2;
+#X obj 256 149 -~ 1;
+#X obj 407 92 r~ wave_pos;
+#X obj 304 212 *~;
+#X obj 87 290 *~;
+#X obj 255 290 *~;
+#X obj 177 290 *~;
+#X obj 284 354 outlet~;
+#X text 198 21 This switches which wave is more dominant in a similar
+fashion to Panning;
+#X text 13 212 OscA;
+#X text 121 213 oscB;
+#X text 342 203 oscD;
+#X text 218 214 oscC;
+#X connect 0 0 12 0;
+#X connect 1 0 14 0;
+#X connect 2 0 13 0;
+#X connect 3 0 11 0;
+#X connect 4 0 5 0;
+#X connect 5 0 12 1;
+#X connect 6 0 14 1;
+#X connect 7 0 13 1;
+#X connect 8 0 6 0;
+#X connect 9 0 7 0;
+#X connect 10 0 9 0;
+#X connect 10 0 8 0;
+#X connect 10 0 4 0;
+#X connect 10 0 11 1;
+#X connect 11 0 15 0;
+#X connect 12 0 15 0;
+#X connect 13 0 15 0;
+#X connect 14 0 15 0;
+#X restore 28 197 pd waveswitch;
+#X obj 29 256 *~;
+#X obj 87 233 r~ wt_waveADSR;
+#N canvas 1015 284 418 261 filters 0;
+#X obj 57 59 inlet~;
+#X obj 116 222 outlet~;
+#X obj 116 146 moog~;
+#X obj 114 77 r~ wt_lowcutoff;
+#X obj 221 77 r~ wt_lowres;
+#X obj 117 193 vcf~;
+#X obj 180 137 r~ wt_bpcentre;
+#X obj 260 170 r wt_bpres;
+#X connect 0 0 2 0;
+#X connect 2 0 5 0;
+#X connect 3 0 2 1;
+#X connect 4 0 2 2;
+#X connect 5 0 1 0;
+#X connect 6 0 5 1;
+#X connect 7 0 5 2;
+#X restore 29 288 pd filters;
+#X text 187 236 combined with ADSR envelope for the voice;
+#X text 109 289 put through a lowpass filter and a bandpass filter
+;
+#X connect 0 0 5 0;
+#X connect 1 0 4 0;
+#X connect 2 0 10 0;
+#X connect 2 1 10 1;
+#X connect 2 2 10 2;
+#X connect 2 3 10 3;
+#X connect 4 0 2 0;
+#X connect 5 0 1 0;
+#X connect 9 0 4 1;
+#X connect 10 0 11 0;
+#X connect 11 0 13 0;
+#X connect 12 0 11 1;
+#X connect 13 0 3 0;
+#X restore 47 -108 pd oscillator;
+#N canvas 483 155 708 583 smoothslides 0;
+#X obj -32 81 line;
+#X obj 114 81 line;
+#X obj 265 81 line;
+#X obj 433 81 line;
+#X msg -32 48 \$1 600;
+#X msg 433 48 \$1 600;
+#X msg 265 48 \$1 600;
+#X msg 114 48 \$1 600;
+#X obj -32 15 r xwt_qlist_lowmodfreq;
+#X obj 114 15 r xwt_qlist_lowmoddepth;
+#X obj 265 15 r xwt_qlist_lowmodamount;
+#X obj 433 15 r xwt_qlist_bandcentre;
+#X obj -32 114 s wt_qlist_lowmodfreq;
+#X obj 114 114 s wt_qlist_lowmoddepth;
+#X obj 265 114 s wt_qlist_lowmodamount;
+#X obj 433 114 s wt_qlist_bandcentre;
+#X obj -32 147 r xwt_qlist_LFOrate;
+#X obj -32 213 line;
+#X obj -32 246 s wt_qlist_LFOrate;
+#X obj 114 213 line;
+#X obj 114 147 r xwt_qlist_LFOdepth;
+#X obj 114 246 s wt_qlist_LFOdepth;
+#X obj 265 213 line;
+#X obj 265 147 r xwt_qlist_voice1;
+#X obj 265 246 s wt_qlist_voice1;
+#X obj -28 365 line;
+#X obj 116 365 line;
+#X obj 433 147 r xwt_qlist_voice2;
+#X obj 433 246 s wt_qlist_voice2;
+#X obj -28 299 r xwt_qlist_voice3;
+#X obj -28 398 s wt_qlist_voice3;
+#X obj 116 299 r xwt_qlist_voice4;
+#X obj 116 398 s wt_qlist_voice4;
+#X msg -32 180 \$1 600;
+#X msg 114 180 \$1 600;
+#X msg 265 180 \$1 600;
+#X obj 433 213 line;
+#X msg 433 180 \$1 600;
+#X msg -28 332 \$1 600;
+#X msg 116 332 \$1 600;
+#X obj 262 365 line;
+#X obj 262 299 r xwt_qlist_pan;
+#X obj 428 365 line;
+#X obj 428 299 r xwt_qlist_overallAMP;
+#X obj 428 398 s wt_qlist_overallAMP;
+#X obj 262 398 s wt_qlist_pan;
+#X obj -28 497 line;
+#X obj -28 431 r xwt_qlist_wavepos;
+#X obj -28 530 s wt_qlist_wavepos;
+#X msg -28 464 \$1 3000;
+#X msg 428 332 \$1 1000;
+#X msg 262 332 \$1 1000;
+#X obj 116 497 line;
+#X obj 116 530 s wt_qlist_lowmoddepth;
+#X msg 116 464 \$1 3000;
+#X obj 116 431 r zwt_qlist_lowmoddepth;
+#X obj 262 497 line;
+#X obj 262 431 r zwt_qlist_bandcentre;
+#X obj 262 530 s zt_qlist_bandcentre;
+#X msg 262 464 \$1 6000;
+#X connect 0 0 12 0;
+#X connect 1 0 13 0;
+#X connect 2 0 14 0;
+#X connect 3 0 15 0;
+#X connect 4 0 0 0;
+#X connect 5 0 3 0;
+#X connect 6 0 2 0;
+#X connect 7 0 1 0;
+#X connect 8 0 4 0;
+#X connect 9 0 7 0;
+#X connect 10 0 6 0;
+#X connect 11 0 5 0;
+#X connect 16 0 33 0;
+#X connect 17 0 18 0;
+#X connect 19 0 21 0;
+#X connect 20 0 34 0;
+#X connect 22 0 24 0;
+#X connect 23 0 35 0;
+#X connect 25 0 30 0;
+#X connect 26 0 32 0;
+#X connect 27 0 37 0;
+#X connect 29 0 38 0;
+#X connect 31 0 39 0;
+#X connect 33 0 17 0;
+#X connect 34 0 19 0;
+#X connect 35 0 22 0;
+#X connect 36 0 28 0;
+#X connect 37 0 36 0;
+#X connect 38 0 25 0;
+#X connect 39 0 26 0;
+#X connect 40 0 45 0;
+#X connect 41 0 51 0;
+#X connect 42 0 44 0;
+#X connect 43 0 50 0;
+#X connect 46 0 48 0;
+#X connect 47 0 49 0;
+#X connect 49 0 46 0;
+#X connect 50 0 42 0;
+#X connect 51 0 40 0;
+#X connect 52 0 53 0;
+#X connect 54 0 52 0;
+#X connect 55 0 54 0;
+#X connect 56 0 58 0;
+#X connect 57 0 59 0;
+#X connect 59 0 56 0;
+#X restore 5 -408 pd smoothslides;
+#X obj 222 -56 *~ 0.5;
+#X text 114 -406 smooths sliders on interface screen to make it look
+cooler;
+#X connect 0 0 20 0;
+#X connect 1 0 20 1;
+#X connect 2 0 20 2;
+#X connect 3 0 20 3;
+#X connect 4 0 9 0;
+#X connect 9 0 8 0;
+#X connect 9 1 8 1;
+#X connect 19 0 4 1;
+#X connect 20 0 24 0;
+#X connect 20 1 21 0;
+#X connect 20 2 22 0;
+#X connect 20 3 23 0;
+#X connect 21 0 26 0;
+#X connect 22 0 26 0;
+#X connect 23 0 26 0;
+#X connect 24 0 26 0;
+#X connect 26 0 4 0;
+#X restore 622 -3062 pd wavetable;
+#X obj 622 -3044 cnv 15 800 780 empty empty empty 20 12 0 14 -204800
+-66577 0;
+#X obj 632 -2984 vsl 15 128 0 127 0 0 wt_interface_voice1 wt_qlist_voice1
+empty 0 -9 0 10 -258113 -1 -1 0 1;
+#X obj 684 -2984 vsl 15 128 0 127 0 0 wt_interface_voice2 wt_qlist_voice2
+empty 0 -9 0 10 -260097 -1 -1 0 1;
+#X obj 734 -2984 vsl 15 128 0 127 0 0 wt_interface_voice3 wt_qlist_voice3
+empty 0 -9 0 10 -257985 -1 -1 0 1;
+#X obj 784 -2983 vsl 15 128 0 127 0 0 wt_interface_voice4 wt_qlist_voice4
+empty 0 -9 0 10 -4034 -1 -1 0 1;
+#X text 620 -3007 voice 1;
+#X text 673 -3005 voice 2;
+#X text 724 -3004 voice 3;
+#X text 775 -3005 voice 4;
+#X obj 639 -2731 vsl 15 128 0 1 0 0 wt_overall_amp wt_qlist_overallAMP
+empty 0 -9 0 10 -191407 -1 -1 0 1;
+#X obj 705 -2730 bng 15 250 50 0 wt_interface_noteon wt_qlist_noteon
+empty 17 7 0 10 -262144 -1 -1;
+#X obj 705 -2676 bng 15 250 50 0 wt_interface_noteoff wt_qlist_noteoff
+empty 17 7 0 10 -262144 -1 -1;
+#X text 691 -2747 note on;
+#X text 693 -2692 note off;
+#X text 623 -2751 amplitude;
+#X obj 641 -2535 hsl 128 15 1 0 0 0 wt_interface_pan wt_qlist_pan empty
+-2 -8 0 10 -191407 -1 -1 6350 1;
+#X obj 889 -2980 vsl 15 128 0 1 0 0 wt_oscillator_amp1 wt_qlist_oscAMP1
+empty 0 -9 0 10 -261234 -1 -1 0 1;
+#X obj 921 -2979 vsl 15 128 0 5000 0 0 wt_oscillator_attack1 wt_qlist_oscATK1
+empty 0 -9 0 10 -261682 -1 -1 0 1;
+#X obj 951 -2979 vsl 15 128 0 5000 0 0 wt_oscillator_decay1 wt_qlist_oscDEC1
+empty 0 -9 0 10 -204786 -1 -1 0 1;
+#X obj 982 -2979 vsl 15 128 0 1 0 0 wt_oscillator_sustain1 wt_qlist_oscSUS1
+empty 0 -9 0 10 -203904 -1 -1 0 1;
+#X obj 1010 -2979 vsl 15 128 0 5000 0 0 wt_oscillator_release1 wt_qlist_oscREL1
+empty 0 -9 0 10 -232576 -1 -1 0 1;
+#X text 885 -2998 AMP;
+#X text 922 -2998 A;
+#X text 953 -2998 D;
+#X text 983 -2998 S;
+#X text 1010 -2997 R;
+#X text 662 -2563 Panning;
+#X text 624 -2534 L;
+#X text 776 -2535 R;
+#X obj 897 -2414 vsl 15 128 0 127 0 0 wt_bandpass_centre wt_qlist_bandcentre
+empty 0 -9 0 10 -191407 -1 -1 0 1;
+#X obj 995 -2410 vsl 15 128 0 10 0 0 wt_bandpass_resonance wt_qlist_bandres
+empty 0 -9 0 10 -191407 -1 -1 0 1;
+#X text 975 -2431 resonance;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array oscA 67 float 1;
+#A 0 -0.305903 0 0.305903 0.580173 0.796476 0.938032 0.999999 0.989559
+0.923758 0.825625 0.719405 0.625944 0.559135 0.524097 0.517359 0.528844
+0.545098 0.552945 0.542716 0.51033 0.457851 0.392468 0.324274 0.263463
+0.217659 0.190055 0.17879 0.177661 0.177948 0.170833 0.149779 0.112245
+0.0603008 1.66967e-006 -0.0602977 -0.112243 -0.149777 -0.170832 -0.177948
+-0.177661 -0.17879 -0.190054 -0.217657 -0.26346 -0.32427 -0.392464
+-0.457848 -0.510328 -0.542714 -0.552945 -0.545098 -0.528845 -0.517359
+-0.524096 -0.559132 -0.62594 -0.719399 -0.825619 -0.923754 -0.989556
+-1 -0.938037 -0.796486 -0.580187 -0.305919 -1.68317e-005 0.305887;
+#X coords 0 1 66 -1 200 140 1 0 0;
+#X restore 1213 -3014 graph;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array oscB 67 float 1;
+#A 0 -0.305903 0 0.305903 0.580173 0.796476 0.938032 0.999999 0.989559
+0.923758 0.825625 0.719405 0.625944 0.559135 0.524097 0.517359 0.528844
+0.545098 0.552945 0.542716 0.51033 0.457851 0.392468 0.324274 0.263463
+0.217659 0.190055 0.17879 0.177661 0.177948 0.170833 0.149779 0.112245
+0.0603008 1.66967e-006 -0.0602977 -0.112243 -0.149777 -0.170832 -0.177948
+-0.177661 -0.17879 -0.190054 -0.217657 -0.26346 -0.32427 -0.392464
+-0.457848 -0.510328 -0.542714 -0.552945 -0.545098 -0.528845 -0.517359
+-0.524096 -0.559132 -0.62594 -0.719399 -0.825619 -0.923754 -0.989556
+-1 -0.938037 -0.796486 -0.580187 -0.305919 -1.68317e-005 0.305887;
+#X coords 0 1 66 -1 200 140 1 0 0;
+#X restore 1218 -2842 graph;
+#X obj 1095 -2936 hradio 15 1 0 4 wt_presets_oscA wt_qlist_presetA
+empty 0 -8 0 10 -228856 -1 -1 0;
+#X obj 1096 -2881 hradio 15 1 0 4 wt_presets_oscB wt_qlist_presetB
+empty 0 -8 0 10 -228856 -1 -1 0;
+#X obj 1119 -2751 bng 15 250 50 0 wt_presets_normalize wt_qlist_normalize
+empty 17 7 0 10 -262144 -1 -1;
+#X text 1069 -2957 Oscillator A presets;
+#X text 1070 -2904 Oscillator B presets;
+#X text 1100 -2769 normalize;
+#X text 673 -3033 Oscillator Voices;
+#X text 894 -3025 oscillatorA ADSR envelope;
+#X text 1091 -2454 LFO "Wobble";
+#X obj 1078 -2409 vsl 15 128 0 5 0 0 wt_LFO_rate wt_qlist_LFOrate empty
+0 -9 0 10 -191407 -1 -1 0 1;
+#X obj 1162 -2406 vsl 15 128 0 15 0 0 wt_LFO_depth wt_qlist_LFOdepth
+empty 0 -9 0 10 -191407 -1 -1 0 1;
+#X text 1056 -2432 wobble rate;
+#X text 1136 -2431 wobble depth;
+#X text 705 -2445 PRESETS;
+#X obj 661 -2360 bng 15 250 50 0 wt_preset1 wt_qlist_preset1 empty
+17 7 0 10 -262144 -1 -1;
+#X obj 734 -2360 bng 15 250 50 0 wt_preset2 wt_qlist_preset2 empty
+17 7 0 10 -262144 -1 -1;
+#X obj 795 -2359 bng 15 250 50 0 wt_preset3 wt_qlist_preset3 empty
+17 7 0 10 -262144 -1 -1;
+#X text 653 -2427 these are 3 different possible;
+#X text 653 -2412 sounds for the synth playing;
+#X text 653 -2395 playing different chords;
+#X text 631 -2344 B♭ Minor 7th;
+#X text 715 -2345 C dim7th;
+#X text 787 -2344 E add4;
+#N canvas 685 74 553 504 karplus 0;
+#X obj 75 -7454 *~;
+#X msg 199 -7495 0;
+#X msg 116 -7481 1;
+#X obj 125 -7537 bng 15 250 50 0 empty ks_noteon empty 17 7 0 10 -262144
+-1 -1;
+#X obj 75 -7417 +~;
+#X obj 123 -7395 delwrite~ karplus 1000;
+#N canvas 1035 264 535 384 presets 0;
+#X obj 111 -7310 hradio 15 1 0 3 empty ks_presets empty 0 -8 0 10 -262144
+-1 -1 1;
+#X obj 114 -7165 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 136 -7164 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 157 -7164 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 115 -7202 route 0 1 2;
+#X text 178 -7287 each preset can be altered from here;
+#X msg 184 -7102 \; xks_qlist_cutoff 98 \; xks_qlist_gain 0.899 \;
+xks_qlist_roomsize 0.188 \; xks_qlist_damping 0.645 \; xks_qlist_wetdry
+0.091 \; ks_qlist_reverbonoff 1 \; xks_qlist_pan 0.78 \; xks_qlist_pitch
+36 \;;
+#X msg 18 -7102 \; xks_qlist_cutoff 114 \; xks_qlist_gain 0.885 \;
+xks_qlist_roomsize 0.826 \; xks_qlist_damping 0.433 \; xks_qlist_wetdry
+0.255 \; ks_qlist_reverbonoff 1 \; xks_qlist_pan 0.5 \; xks_qlist_pitch
+48 \;;
+#X msg 352 -7102 \; xks_qlist_cutoff 111 \; xks_qlist_gain 0.96 \;
+xks_qlist_roomsize 0.384 \; xks_qlist_damping 0.558 \; xks_qlist_wetdry
+0.291 \; ks_qlist_reverbonoff 1 \; xks_qlist_pan 0.35 \; xks_qlist_pitch
+60 \;;
+#X connect 0 0 4 0;
+#X connect 1 0 7 0;
+#X connect 2 0 6 0;
+#X connect 3 0 8 0;
+#X connect 4 0 1 0;
+#X connect 4 1 2 0;
+#X connect 4 2 3 0;
+#X restore -38 -7658 pd presets;
+#X obj 102 -7200 dac~;
+#N canvas 1225 252 401 242 reverb 0;
+#N canvas 1056 87 620 304 reverb 0;
+#X obj 96 -6735 freeverb~;
+#X msg 211 -6897 roomsize \$1;
+#X msg 217 -6852 damping \$1;
+#X msg 211 -6804 wet \$1;
+#X msg 230 -6767 dry \$1;
+#X obj 289 -6800 expr 1-$f1;
+#X obj 80 -6866 inlet~;
+#X obj 86 -6681 outlet~;
+#X obj 133 -6865 inlet~;
+#X obj 152 -6678 outlet~;
+#X obj 211 -6920 inlet;
+#X obj 217 -6874 inlet;
+#X obj 258 -6828 inlet;
+#X msg 234 -6727 bypass \$1;
+#X obj 331 -6770 inlet;
+#X obj 331 -6747 expr 1 -$f1;
+#X text 295 -6921 roomsize alters how echoey the sound is;
+#X text 300 -6876 damping alters how muted the sound is;
+#X text 300 -6829 wet/dry alters the ratio between unaltered and;
+#X text 360 -6812 reverbed signal;
+#X text 320 -6708 or off;
+#X text 315 -6725 bypass allows the reverb to be turned on;
+#X connect 0 0 7 0;
+#X connect 0 1 9 0;
+#X connect 1 0 0 0;
+#X connect 2 0 0 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 0;
+#X connect 5 0 4 0;
+#X connect 6 0 0 0;
+#X connect 8 0 0 1;
+#X connect 10 0 1 0;
+#X connect 11 0 2 0;
+#X connect 12 0 5 0;
+#X connect 12 0 3 0;
+#X connect 13 0 0 0;
+#X connect 14 0 15 0;
+#X connect 15 0 13 0;
+#X restore 54 -7105 pd reverb;
+#X obj 38 -7033 outlet~;
+#X obj 121 -7028 outlet~;
+#X obj 37 -7185 inlet~;
+#X text 140 -7108 each value inlet is sent into another;
+#X text 141 -7094 subpatch to simplify things;
+#X obj 57 -7160 r ks_roomsize;
+#X obj 120 -7180 r ks_damping;
+#X obj 170 -7153 r ks_wetdry;
+#X obj 250 -7145 r ks_onoff;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 3 0 0 0;
+#X connect 3 0 0 1;
+#X connect 6 0 0 2;
+#X connect 7 0 0 3;
+#X connect 8 0 0 4;
+#X connect 9 0 0 5;
+#X restore 76 -7330 pd reverb;
+#X text 214 -7579 here a short burst of noise is fired for 5ms;
+#X text 217 -7560 starting the karplus strong synth;
+#X text 221 -7445 combined with a lowpass object;
+#N canvas 368 72 799 621 karplus_variables 0;
+#X obj 50 -7333 vsl 15 128 0 127 0 0 empty ks_karplus_pitch empty 0
+-9 0 10 -262144 -1 -1 0 1;
+#X text 17 -7416 pitch control;
+#N canvas 833 349 636 260 randomizer 0;
+#X obj 151 -7530 inlet;
+#X obj 195 -7498 inlet;
+#X obj 225 -7450 inlet;
+#X obj 238 -7415 inlet;
+#X text 241 -7488 rate of bangs sent to the random value;
+#X text 281 -7434 this sets the range of possible values to be randomizes
+;
+#X text 225 -7390 the starting note defaults at C3 but can be altered
+also;
+#X text 342 -7345 sends to pitch and noteon;
+#X obj 191 -7393 + 36;
+#X obj 164 -7468 metro 500;
+#X obj 167 -7423 random 24;
+#X obj 234 -7343 s ks_qlist_pitch;
+#X obj 99 -7342 s ks_qlist_noteon;
+#X connect 0 0 9 0;
+#X connect 1 0 9 1;
+#X connect 2 0 10 1;
+#X connect 3 0 8 1;
+#X connect 8 0 11 0;
+#X connect 8 0 12 0;
+#X connect 9 0 10 0;
+#X connect 10 0 8 0;
+#X restore 340 -7208 pd randomizer;
+#X obj 340 -7235 tgl 15 0 empty ks_rand_on empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 365 -7367 vsl 15 128 500 150 0 0 empty ks_rand_rate empty 0
+-9 0 10 -262144 -1 -1 12700 1;
+#X text 333 -7384 rate of notes;
+#X text 441 -7349 range of randomization;
+#X obj 474 -7331 vsl 15 128 1 24 0 0 empty ks_rand_range empty 0 -9
+0 10 -262144 -1 -1 6074 1;
+#N canvas 692 181 582 395 lowpass 0;
+#X obj -34 -7870 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 11 -7847 mtof;
+#X obj -16 -7811 /;
+#X obj -16 -7782 delread~ karplus;
+#X obj -16 -7723 *~;
+#X text 8 -7941 pitch change;
+#X text 16 -7761 gain;
+#X obj 60 -7641 mtof;
+#X text 56 -7691 cutoff frequency;
+#X obj -17 -7687 lop~;
+#X obj -18 -7644 outlet~;
+#X text 154 -7917 pitch is read as a delay time that should be similar
+to the amount of time the noise burst is played (a few milliseconds)
+;
+#X text 123 -7754 multiplied by a value to amplify signal (gain should
+never be set to 1 or else the signal won't diminish);
+#X text 200 -7678 cutoff frequency to gradually diminish the sound
+;
+#X obj 82 -7916 r ks_pitch;
+#X obj 59 -7671 inlet;
+#X msg -40 -7847 1000;
+#X obj 8 -7746 inlet~;
+#X obj 1 -7917 r ks_note_on;
+#X connect 0 0 16 0;
+#X connect 1 0 2 1;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 9 0;
+#X connect 7 0 9 1;
+#X connect 9 0 10 0;
+#X connect 14 0 1 0;
+#X connect 14 0 0 0;
+#X connect 15 0 7 0;
+#X connect 16 0 2 0;
+#X connect 17 0 4 1;
+#X connect 18 0 0 0;
+#X restore 183 -7184 pd lowpass;
+#X obj 182 -7375 vsl 15 128 0.8 1 0 0 empty ks_low_gain empty 0 -9
+0 10 -262144 -1 -1 0 1;
+#X text 175 -7395 gain;
+#X obj 240 -7387 vsl 15 128 0 127 0 0 empty ks_low_cutofffreq empty
+0 -9 0 10 -262144 -1 -1 0 1;
+#X text 210 -7405 cutoff freq;
+#X obj 412 -7346 vsl 15 128 12 60 0 0 empty ks_rand_base empty 0 -9
+0 10 -262144 -1 -1 0 1;
+#X text 383 -7364 starting note;
+#X text 319 -7252 on/off;
+#X obj 33 -6942 hsl 128 15 0 1 0 0 empty ks_reverb_roomsize empty -2
+-8 0 10 -262144 -1 -1 0 1;
+#X text 28 -6965 roomsize;
+#X text 185 -6960 damping;
+#X obj 192 -6944 hsl 128 15 0 1 0 0 empty ks_reverb_damping empty -2
+-8 0 10 -262144 -1 -1 0 1;
+#X obj 345 -6942 hsl 128 15 0 1 0 0 empty ks_reverb_wetdry empty -2
+-8 0 10 -262144 -1 -1 1270 1;
+#X text 349 -6956 wet:dry ratio;
+#X obj 487 -6944 tgl 15 0 empty ks_reverb_onoff empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X text 481 -6962 on/off;
+#X msg 609 -7170 \$1 25;
+#X obj 609 -7114 line~;
+#X text 594 -7345 amplitude control;
+#X obj 569 -6944 hsl 128 15 0 1 0 0 empty ks_karplus_pan empty -2 -8
+0 10 -262144 -1 -1 9906 1;
+#X text 566 -6969 Panning;
+#X text 549 -6946 L;
+#X text 704 -6948 R;
+#X text 10 -7125 alters pitch of produced;
+#X text 11 -7114 by changing delay time;
+#X text 185 -7125 alter tone of synth;
+#X text 179 -7110 by altering gain of signal;
+#X text 181 -6992 and cutoff frequency;
+#X text 337 -7192 the randomizer adds a bit of interest;
+#X text 339 -7177 to the sound and also allows for the user;
+#X text 342 -7163 to not always have to press noteon;
+#X text 606 -7030 a simple volume control;
+#X text 609 -7012 for the synth;
+#X text 183 -6872 send symbols for the reverb and panning;
+#X obj 183 -7142 s~ ks_lowpass;
+#X obj 608 -7050 s~ ks_Vol;
+#X obj 28 -6919 s ks_roomsize;
+#X obj 187 -6916 s ks_damping;
+#X obj 340 -6909 s ks_wetdry;
+#X obj 487 -6907 s ks_onoff;
+#X obj 610 -7321 vsl 15 128 0 1 0 0 empty ks_amp_overall empty 0 -9
+0 10 -262144 -1 -1 0 1;
+#X obj 50 -7144 s ks_pitch;
+#X obj 240 -7240 \$1 25;
+#X obj 240 -7214 line;
+#X obj 182 -7235 \$1 25;
+#X obj 182 -7214 line~;
+#X obj 566 -6906 s ks_pan;
+#X connect 0 0 49 0;
+#X connect 3 0 2 0;
+#X connect 4 0 2 1;
+#X connect 7 0 2 2;
+#X connect 8 0 42 0;
+#X connect 9 0 52 0;
+#X connect 11 0 50 0;
+#X connect 13 0 2 3;
+#X connect 16 0 44 0;
+#X connect 19 0 45 0;
+#X connect 20 0 46 0;
+#X connect 22 0 47 0;
+#X connect 24 0 25 0;
+#X connect 25 0 43 0;
+#X connect 27 0 54 0;
+#X connect 48 0 24 0;
+#X connect 50 0 51 0;
+#X connect 51 0 8 1;
+#X connect 52 0 53 0;
+#X connect 53 0 8 0;
+#X restore -38 -7638 pd karplus_variables;
+#X text 266 -7406 value of delay set to 1000ms;
+#X text 267 -7388 sent to karplus delread object;
+#X text 163 -7315 the sound and give the bass sound more variable tones
+;
+#X text 132 -7370 signal is diminished to prevent clipping;
+#X text 42 -7657 contains the values of the presets which can be altered
+;
+#X text 102 -7639 contains sliders and buttons for the delay \, pitch
+\, randomimzer and reverb/panning values;
+#X obj 121 -7576 r ks_note_on;
+#X obj 138 -7445 r~ ks_lowpass;
+#X obj 161 -7280 r~ ks_Vol;
+#X obj 61 -7481 noise~;
+#X obj 193 -7522 del 10;
+#X text 163 -7332 reverb is added at this stage to alter;
+#N canvas 1175 0 450 300 pan 0;
+#X obj 136 -7207 *~;
+#X obj 52 -7206 *~;
+#X obj 83 -7230 expr $f1 -1;
+#X obj 53 -7262 inlet~;
+#X obj 221 -7273 r ks_pan;
+#X obj 50 -7172 outlet~;
+#X obj 135 -7174 outlet~;
+#X connect 0 0 6 0;
+#X connect 1 0 5 0;
+#X connect 2 0 1 1;
+#X connect 3 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 1;
+#X connect 4 0 2 0;
+#X restore 98 -7228 pd pan;
+#X obj 96 -7265 *~;
+#X obj 72 -7368 *~ 0.15;
+#N canvas 1200 156 450 339 smoothsliders 0;
+#X obj 19 11 r xks_qlist_cutoff;
+#X obj 144 10 r xks_qlist_gain;
+#X obj 258 11 r xks_qlist_pitch;
+#X obj 19 122 r xks_qlist_roomsize;
+#X obj 153 122 r xks_qlist_damping;
+#X obj 290 122 r xks_qlist_wetdry;
+#X obj 19 229 r xks_qlist_pan;
+#X obj 19 70 line;
+#X obj 19 98 s ks_qlist_cutoff;
+#X obj 144 69 line;
+#X obj 144 97 s ks_qlist_gain;
+#X obj 258 68 line;
+#X obj 258 96 s ks_qlist_pitch;
+#X obj 19 173 line;
+#X obj 153 171 line;
+#X obj 19 201 s ks_qlist_roomsize;
+#X obj 290 172 line;
+#X obj 153 199 s ks_qlist_damping;
+#X obj 290 198 s ks_qlist_wetdry;
+#X obj 19 281 line;
+#X obj 19 309 s ks_qlist_pan;
+#X obj 154 227 r xks_qlist_amp;
+#X obj 154 281 line;
+#X obj 154 309 s ks_qlist_amp;
+#X msg 19 147 \$1 1000;
+#X msg 153 148 \$1 1000;
+#X msg 290 147 \$1 1000;
+#X msg 19 257 \$1 2500;
+#X msg 154 256 \$1 3000;
+#X obj 295 282 line;
+#X msg 295 257 \$1 3000;
+#X msg 258 41 \$1 3500;
+#X msg 144 41 \$1 3500;
+#X obj 295 228 r xks_qlist_randrange;
+#X obj 295 310 s ks_qlist_randrange;
+#X msg 19 40 \$1 3500;
+#X connect 0 0 35 0;
+#X connect 1 0 32 0;
+#X connect 2 0 31 0;
+#X connect 3 0 24 0;
+#X connect 4 0 25 0;
+#X connect 5 0 26 0;
+#X connect 6 0 27 0;
+#X connect 7 0 8 0;
+#X connect 9 0 10 0;
+#X connect 11 0 12 0;
+#X connect 13 0 15 0;
+#X connect 14 0 17 0;
+#X connect 16 0 18 0;
+#X connect 19 0 20 0;
+#X connect 21 0 28 0;
+#X connect 22 0 23 0;
+#X connect 24 0 13 0;
+#X connect 25 0 14 0;
+#X connect 26 0 16 0;
+#X connect 27 0 19 0;
+#X connect 28 0 22 0;
+#X connect 29 0 34 0;
+#X connect 30 0 29 0;
+#X connect 31 0 11 0;
+#X connect 32 0 9 0;
+#X connect 33 0 30 0;
+#X connect 35 0 7 0;
+#X restore -36 -7612 pd smoothsliders;
+#X text 79 -7609 smooths out sliders on interface screen to look cooler
+;
+#X connect 0 0 4 0;
+#X connect 1 0 0 1;
+#X connect 2 0 0 1;
+#X connect 3 0 2 0;
+#X connect 3 0 23 0;
+#X connect 4 0 5 0;
+#X connect 4 0 27 0;
+#X connect 8 0 26 0;
+#X connect 8 1 26 0;
+#X connect 19 0 3 0;
+#X connect 20 0 4 1;
+#X connect 21 0 26 1;
+#X connect 22 0 0 0;
+#X connect 23 0 1 0;
+#X connect 25 0 7 0;
+#X connect 25 1 7 1;
+#X connect 26 0 25 0;
+#X connect 27 0 8 0;
+#X restore 62 -3062 pd karplus;
+#X obj 62 -3045 cnv 15 550 600 empty empty empty 20 12 0 14 -261234
+-66577 0;
+#X obj 478 -2974 bng 15 250 50 0 ks_noteon ks_qlist_noteon Note_Hit
+-15 -8 0 10 -4034 -1 -1;
+#X obj 92 -2999 vsl 15 128 0 127 0 0 ks_low_cutofffreq ks_qlist_cutoff
+Cutoff -6 -9 0 10 -258113 -1 -1 0 1;
+#X obj 175 -2998 vsl 15 128 0.8 1 0 0 ks_low_gain ks_qlist_gain Gain
+-4 -9 0 10 -258113 -1 -1 0 1;
+#X text 77 -3036 LOW PASS;
+#X obj 379 -2794 tgl 15 0 ks_rand_on ks_qlist_randon On/Off -10 -8
+0 10 -232576 -1 -1 0 1;
+#X obj 376 -2645 vsl 15 128 500 150 0 0 ks_rand_rate ks_qlist_randrate
+Random_Note_Rate -40 -9 0 10 -232576 -1 -1 12700 1;
+#X obj 530 -2833 vsl 15 128 1 24 0 0 ks_rand_range ks_qlist_randrange
+Random_Note_Range -40 -9 0 10 -232576 -1 -1 6074 1;
+#X text 356 -2846 RANDOMIZER;
+#X obj 90 -2749 vsl 15 128 0 1 0 0 ks_reverb_roomsize ks_qlist_roomsize
+Roomsize -10 -9 0 10 -4032 -1 -1 0 1;
+#X obj 152 -2748 vsl 15 128 0 1 0 0 ks_reverb_damping ks_qlist_damping
+Damping -10 -9 0 10 -4032 -1 -1 0 1;
+#X obj 222 -2748 vsl 15 128 0.1 1 0 0 ks_reverb_wetdry ks_qlist_wetdry
+Wet/Dry_Ratio -18 -9 0 10 -4032 -1 -1 0 1;
+#X obj 148 -2808 tgl 15 0 ks_reverb_onoff ks_qlist_reverbonoff On/Off
+-8 -8 0 10 -4032 -1 -1 0 1;
+#X obj 418 -2993 vsl 15 128 0 127 0 0 ks_karplus_pitch ks_qlist_pitch
+Pitch -5 -9 0 10 -257985 -1 -1 0 1;
+#X text 230 -3036 KARPLUS-STRONG SYNTH;
+#X obj 221 -2977 hradio 15 1 0 3 ks_presets ks_qlist_presets Presets
+0 -8 0 10 -260097 -1 -1 1;
+#X obj 527 -2642 vsl 15 128 12 60 0 0 ks_rand_base ks_qlist_randbase
+Bottom_Note -20 -9 0 10 -232576 -1 -1 0 1;
+#X obj 546 -3003 vsl 15 128 0 1 0 0 ks_amp_overall ks_qlist_amp Amplitude
+-15 -9 0 10 -4034 -1 -1 0 1;
+#X text 205 -2951 Presets:;
+#X text 204 -2934 1 Harpsichord sounding tone;
+#X text 205 -2920 2 muted bass guitar tone;
+#X text 205 -2906 3 more of an electric guitar tone;
+#X obj 134 -2549 hsl 128 15 0 1 0 0 ks_karplus_pan ks_qlist_pan Panning
+35 -8 0 10 -204786 -1 -1 9906 1;
+#X text 113 -2551 L;
+#X text 270 -2551 R;
+#X obj 1132 -2111 qlist;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array oscC 67 float 1;
+#A 0 -0.305903 0 0.305903 0.580173 0.796476 0.938032 0.999999 0.989559
+0.923758 0.825625 0.719405 0.625944 0.559135 0.524097 0.517359 0.528844
+0.545098 0.552945 0.542716 0.51033 0.457851 0.392468 0.324274 0.263463
+0.217659 0.190055 0.17879 0.177661 0.177948 0.170833 0.149779 0.112245
+0.0603008 1.66967e-006 -0.0602977 -0.112243 -0.149777 -0.170832 -0.177948
+-0.177661 -0.17879 -0.190054 -0.217657 -0.26346 -0.32427 -0.392464
+-0.457848 -0.510328 -0.542714 -0.552945 -0.545098 -0.528845 -0.517359
+-0.524096 -0.559132 -0.62594 -0.719399 -0.825619 -0.923754 -0.989556
+-1 -0.938037 -0.796486 -0.580187 -0.305919 -1.68317e-005 0.305887;
+#X coords 0 1 66 -1 200 140 1 0 0;
+#X restore 1218 -2671 graph;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array oscD 67 float 1;
+#A 0 -0.305903 0 0.305903 0.580173 0.796476 0.938032 0.999999 0.989559
+0.923758 0.825625 0.719405 0.625944 0.559135 0.524097 0.517359 0.528844
+0.545098 0.552945 0.542716 0.51033 0.457851 0.392468 0.324274 0.263463
+0.217659 0.190055 0.17879 0.177661 0.177948 0.170833 0.149779 0.112245
+0.0603008 1.66967e-006 -0.0602977 -0.112243 -0.149777 -0.170832 -0.177948
+-0.177661 -0.17879 -0.190054 -0.217657 -0.26346 -0.32427 -0.392464
+-0.457848 -0.510328 -0.542714 -0.552945 -0.545098 -0.528845 -0.517359
+-0.524096 -0.559132 -0.62594 -0.719399 -0.825619 -0.923754 -0.989556
+-1 -0.938037 -0.796486 -0.580187 -0.305919 -1.68317e-005 0.305887;
+#X coords 0 1 66 -1 200 140 1 0 0;
+#X restore 1217 -2486 graph;
+#X obj 1108 -3004 knob 32 32 0 3 0 0 wt_waveposition wt_qlist_wavepos
+Wave_Position -30 -8 0 12 -262144 -1 -1 0 1;
+#X obj 1098 -2834 hradio 15 1 0 4 wt_presets_oscC wt_qlist_presetC
+empty 0 -8 0 10 -228856 -1 -1 0;
+#X obj 1099 -2788 hradio 15 1 0 4 wt_presets_oscD wt_qlist_presetD
+empty 0 -8 0 10 -228856 -1 -1 0;
+#X text 1072 -2857 Oscillator C presets;
+#X text 1073 -2811 Oscillator D presets;
+#X text 1049 -2684 1 Sawtooth Wave;
+#X text 1051 -2668 2 Sine Wave;
+#X text 1051 -2650 3 Square Wave;
+#X text 1052 -2634 4 Triangle Wave;
+#X text 1042 -2707 Presets for the oscillators:;
+#X text 1043 -2614 press the normalize button;
+#X text 1043 -2595 after switching waveform;
+#X text 1045 -2577 to ensure no clipping;
+#X text 917 -2460 Bandpass Filter;
+#X text 865 -2433 centre frequency;
+#X obj 839 -2787 vsl 15 128 0 5 0 0 wt_lowpass_modfreq wt_qlist_lowmodfreq
+modulation_frequency -50 -9 0 10 -232576 -1 -1 0 1;
+#X obj 976 -2788 vsl 15 128 0 10000 0 0 wt_lowpass_modamount wt_qlist_lowmodamount
+modulation_amount -35 -9 0 10 -232576 -1 -1 0 1;
+#X obj 838 -2608 vsl 15 128 100 1000 0 0 wt_lowpass_moddepth wt_qlist_lowmoddepth
+Modulation_Depth -35 -9 0 10 -232576 -1 -1 0 1;
+#X obj 977 -2609 vsl 15 128 1 4 0 0 wt_lowpass_res wt_qlist_lowres
+Resonance -15 -9 0 10 -232576 -1 -1 0 1;
+#X text 885 -2830 Lowpass Filter;
+#X msg 1290 -2164 read karpluscomposition.txt;
+#X obj 1198 -2194 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 1083 -2163 read wavetablecomposition.txt;
+#X obj 1282 -2109 qlist;
+#X obj 290 -2423 bng 50 250 50 0 compplay empty GO! 5 25 0 25 -4034
+-1 -45076;
+#X obj 1196 -2225 r compplay;
+#X text 349 -2427 press to start composition;
+#X text 136 -3064 <--- press to look inside the karplus-strong synth
+;
+#X text 710 -3065 <--- press to look inside the wavetable synth;
+#X connect 107 0 110 0;
+#X connect 108 0 109 0;
+#X connect 108 0 107 0;
+#X connect 108 0 84 0;
+#X connect 108 0 110 0;
+#X connect 109 0 84 0;
+#X connect 112 0 108 0;
